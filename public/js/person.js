@@ -1,16 +1,20 @@
 
 var wait = false;
 function personPlay() {
-    socket = io.connect('http://127.0.0.1:8001');
+    socket = io.connect('http://172.17.169.213:8001');
     
     socket.on('wait',function() {
         textContainer.innerText = '等待玩家加入';
+        document.getElementById('load').style.display = 'block';
+        document.getElementById('load').style.left = (document.body.clientWidth / 2 - 100) + 'px'
+
         me = false;
         wait = true;
 
     });
 
     socket.on('first',function() {
+        document.getElementById('load').style.display = 'none';
         textContainer.innerText = '请走棋';
         Big = true;
         me = true;

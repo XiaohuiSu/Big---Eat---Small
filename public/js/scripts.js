@@ -1,4 +1,4 @@
-var canvasWidth = canvasHeight = Math.min(800, document.documentElement.clientWidth - 20);
+var canvasWidth = canvasHeight = Math.min(500, document.documentElement.clientWidth - 20);
 
 var textContainer = document.getElementById('textContainer');
 var canvas = document.getElementById('chess');
@@ -39,6 +39,11 @@ var isXiaQi = false;
 // 初始化棋牌
 window.onload = function() {
     drawChess();
+}
+
+window.onresize = function() {
+    document.getElementById('load').style.left = (document.body.clientWidth / 2 - 100) + 'px';
+
 }
 
 canvas.onclick = function(e) {
@@ -159,7 +164,8 @@ function drawChess() {
 // 联网对战点击事件
 person.onclick = function() {
     if(wait) {
-        showDialog('是否结束等待，重新匹配？',function() {
+        showDialog('是否结束等待？',function() {
+            document.getElementById('load').style.display = 'none';
             socket.disconnect();
             reset();
             personPlay();
@@ -215,6 +221,7 @@ function isWinner(i,j) {
                 if(n1 < MAX - 1 && chessBoard[m][n1 + 1] === 0) {
                     return false;
                 }
+                
 
             }
 
@@ -233,9 +240,9 @@ function isWinner(i,j) {
                     return false;
 
                 }
-                return true;
             }
         }
+        return true;
     
     }
  
