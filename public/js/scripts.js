@@ -293,7 +293,7 @@ function isOk(i ,j) {
         if(obj.x === i) {
             if(Math.abs(obj.y - j) === 1 && !chessBoard[i][j]) {
                 return true;
-            } else if(Math.abs(obj.y - j) === 2 && chessBoard[i][j] === 2) {
+            } else if(Math.abs(obj.y - j) === 2 && chessBoard[i][j] === 2 && !chessBoard[i][obj.y - 1] && !chessBoard[i][obj.y + 1]) {
                 return true;
             }
         }
@@ -301,10 +301,12 @@ function isOk(i ,j) {
         if(obj.y === j) {
             if(Math.abs(obj.x - i) === 1 && !chessBoard[i][j]) {
                 return true;
-            } else if(Math.abs(obj.x - i) ===2 && chessBoard[i][j] ===2) {
+            } else if(Math.abs(obj.x - i) ===2 && chessBoard[i][j] ===2 && !chessBoard[obj.x - 1][j] && !chessBoard[obj.x + 1][j]) {
                 return true;
             }
         }
+
+        
     } else {
         if(obj.x === i) {
             if(Math.abs(obj.y - j) === 1 && !chessBoard[i][j]) {
