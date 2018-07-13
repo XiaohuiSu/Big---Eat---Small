@@ -1,7 +1,7 @@
 
 var wait = false;
 function personPlay() {
-    socket = io.connect('http://39.106.55.43:8080:8001');
+    socket = io.connect('http://39.106.55.43:8001');
     
     socket.on('wait',function() {
         textContainer.innerText = '等待玩家加入';
